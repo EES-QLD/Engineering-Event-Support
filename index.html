@@ -151,14 +151,33 @@
 
   /* RESPONSIVE */
   @media (max-width: 900px) {
-    nav, section, footer { padding-left: 2rem; padding-right: 2rem; }
-    .hero-content { padding: 3rem 2rem 2rem; }
-    .dream-grid, .structure-intro { grid-template-columns: 1fr; gap: 3rem; }
+    nav { padding: 1.2rem 1.5rem; }
+    nav .nav-tag { display: none; }
+    section { padding: 3.5rem 1.5rem; }
+    footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    .hero-content { padding: 2.5rem 1.5rem 1.5rem; }
+    .hero-sub { font-size: 1rem; }
+    .dream-grid, .structure-intro { grid-template-columns: 1fr; gap: 2rem; }
     .tax-cards { grid-template-columns: repeat(2, 1fr); }
-    .flow-row-5 { grid-template-columns: repeat(2, 1fr); }
+    .flow-row-5 { grid-template-columns: 1fr 1fr; }
+    .flow-row-2 { grid-template-columns: 1fr; }
     .tiers, .destinations, .partner-grid { grid-template-columns: 1fr; }
     .hero-stats { flex-direction: column; }
-    .stat { border-right: none; border-bottom: 1px solid var(--rule); }
+    .stat { border-right: none; border-bottom: 1px solid var(--rule); padding: 1.2rem 1.5rem; }
+    .join-intro { font-size: 1rem; margin-bottom: 2rem; }
+    .tier { padding: 1.8rem 1.5rem; }
+    .dest-intro { font-size: 0.95rem; }
+    .destination { padding: 1.8rem 1.5rem; }
+    .partner-card { padding: 1.8rem 1.5rem; }
+    .contact-body { font-size: 1rem; }
+  }
+  @media (max-width: 480px) {
+    h1 { font-size: 3.2rem; }
+    h2 { font-size: 2.2rem; }
+    .tax-cards { grid-template-columns: 1fr; }
+    .flow-row-5 { grid-template-columns: 1fr; }
+    nav .nav-logo { font-size: 1.1rem; }
+    .btn-primary, .btn-ghost { padding: 0.9rem 1.8rem; font-size: 0.85rem; }
   }
 </style>
 </head>
@@ -185,8 +204,8 @@
   </div>
   <div class="hero-stats">
     <div class="stat">
-      <div class="stat-num">RPEQ</div>
-      <div class="stat-label">Registered professional engineer</div>
+      <div class="stat-num">CPEng</div>
+      <div class="stat-label">Chartered professional engineer</div>
     </div>
     <div class="stat">
       <div class="stat-num">15+</div>
@@ -196,10 +215,7 @@
       <div class="stat-num">3</div>
       <div class="stat-label">Countries on current route</div>
     </div>
-    <div class="stat">
-      <div class="stat-num">5</div>
-      <div class="stat-label">Active income streams</div>
-    </div>
+
   </div>
 </div>
 
@@ -331,7 +347,7 @@
     <div class="flow-row flow-row-2">
       <div class="flow-box highlight">
         <div class="flow-box-label">The entity</div>
-        <div class="flow-box-title">Engineering Event Support Pty Ltd</div>
+        <div class="flow-box-title">Engineering Event Support</div>
         <div class="flow-box-desc">All income lands here · travel costs offset revenue · commercially structured from day one</div>
       </div>
       <div class="flow-box highlight">
@@ -494,8 +510,8 @@
     <div class="section-eyebrow" style="justify-content:center;">Get involved</div>
     <h2>Ready to be part of it?</h2>
     <p class="contact-body">Whether you want to <strong>join a leg of the journey</strong>, partner your brand with the content, invest in the operation, or understand how to build something like this yourself — reach out. Places are genuinely limited and <strong>we're selective about who travels with us</strong>.</p>
-    <a href="mailto:hello@engineeringeventsupport.com.au" class="btn-primary">Make contact</a>
-    <p class="contact-sub">hello@engineeringeventsupport.com.au</p>
+    <a href="mailto:admin@eesqld.com.au" class="btn-primary">Make contact</a>
+    <p class="contact-sub">admin@eesqld.com.au</p>
   </div>
 </section>
 
