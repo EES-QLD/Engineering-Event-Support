@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Engineering Event Support — Partner &amp; Travel With Us</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #0a0a0a; --dark: #111214; --steel: #1c1f24;
+    --amber: #e8a020; --amber-dim: #b07a14; --amber-glow: #f5b830;
+    --white: #f0ece4; --muted: #8a8680; --rule: #2a2d32;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'Barlow', sans-serif; font-weight: 300; line-height: 1.6; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); opacity: 0.03; pointer-events: none; z-index: 1000; }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: grid; grid-template-rows: auto 1fr auto; position: relative; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 80% 30%, rgba(232,160,32,0.09) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 10% 80%, rgba(232,160,32,0.04) 0%, transparent 60%); }
+  .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(232,160,32,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(232,160,32,0.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 80%); }
+  nav { position: relative; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 2rem 4rem; border-bottom: 1px solid var(--rule); }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.12em; color: var(--amber); }
+  .nav-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+  .hero-content { position: relative; z-index: 10; display: flex; flex-direction: column; justify-content: center; padding: 4rem 4rem 2rem; max-width: 940px; }
+  .hero-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--amber); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; }
+  .hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--amber); }
+  h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.8rem, 9vw, 8.5rem); line-height: 0.92; letter-spacing: 0.02em; color: var(--white); margin-bottom: 2rem; }
+  h1 span { color: var(--amber); display: block; }
+  .hero-sub { font-size: 1.15rem; font-weight: 300; color: var(--muted); max-width: 580px; line-height: 1.75; margin-bottom: 3rem; }
+  .hero-sub strong { color: var(--white); font-weight: 600; }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary { font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; background: var(--amber); color: var(--black); border: none; padding: 1rem 2.5rem; cursor: pointer; font-weight: 700; text-decoration: none; display: inline-block; transition: background 0.2s, transform 0.15s; clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%); }
+  .btn-primary:hover { background: var(--amber-glow); transform: translateY(-2px); }
+  .btn-ghost { font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; background: transparent; color: var(--white); border: 1px solid var(--rule); padding: 1rem 2.5rem; cursor: pointer; font-weight: 500; text-decoration: none; display: inline-block; transition: border-color 0.2s, color 0.2s; }
+  .btn-ghost:hover { border-color: var(--amber); color: var(--amber); }
+  .hero-stats { position: relative; z-index: 10; display: flex; border-top: 1px solid var(--rule); }
+  .stat { padding: 1.8rem 4rem; border-right: 1px solid var(--rule); flex: 1; }
+  .stat:last-child { border-right: none; }
+  .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; color: var(--amber); line-height: 1; margin-bottom: 0.25rem; }
+  .stat-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+
+  /* SHARED */
+  section { padding: 6rem 4rem; border-top: 1px solid var(--rule); }
+  .section-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--amber); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.8rem; }
+  .section-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--amber); }
+  h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1; letter-spacing: 0.03em; margin-bottom: 1.5rem; }
+
+  /* DREAM */
+  .dream-section { background: var(--dark); }
+  .dream-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 3rem; align-items: start; }
+  .dream-body { font-size: 1.08rem; color: var(--muted); line-height: 1.85; }
+  .dream-body p + p { margin-top: 1.3rem; }
+  .dream-body strong { color: var(--white); font-weight: 600; }
+  .dream-pillars { display: flex; flex-direction: column; }
+  .pillar { padding: 1.5rem 0; border-bottom: 1px solid var(--rule); display: flex; gap: 1.4rem; align-items: flex-start; }
+  .pillar:first-child { border-top: 1px solid var(--rule); }
+  .pillar-num { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--rule); line-height: 1; flex-shrink: 0; width: 36px; }
+  .pillar-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--amber); margin-bottom: 0.3rem; }
+  .pillar-body { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+
+  /* STRUCTURE */
+  .structure-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
+  .structure-intro p { font-size: 1.05rem; color: var(--muted); line-height: 1.8; }
+  .structure-intro strong { color: var(--white); font-weight: 600; }
+  .tax-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .tax-card { background: var(--dark); padding: 2rem 1.6rem; transition: background 0.2s; }
+  .tax-card:hover { background: var(--steel); }
+  .tax-icon { width: 36px; height: 36px; border: 1px solid var(--amber-dim); display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; }
+  .tax-icon svg { width: 16px; height: 16px; stroke: var(--amber); fill: none; stroke-width: 1.5; }
+  .tax-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--white); margin-bottom: 0.6rem; }
+  .tax-body { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
+
+  /* INCOME */
+  .income-section { background: var(--steel); }
+  .flow { display: flex; flex-direction: column; margin-top: 3rem; }
+  .flow-row { display: grid; gap: 1px; }
+  .flow-row-1 { grid-template-columns: 1fr; }
+  .flow-row-2 { grid-template-columns: repeat(2, 1fr); }
+  .flow-row-5 { grid-template-columns: repeat(5, 1fr); }
+  .flow-connector { display: flex; justify-content: center; padding: 0.6rem 0; }
+  .flow-connector svg { width: 20px; height: 20px; stroke: var(--amber-dim); fill: none; }
+  .flow-box { background: var(--dark); border: 1px solid var(--rule); padding: 1.4rem 1.2rem; transition: border-color 0.2s, background 0.2s; }
+  .flow-box:hover { border-color: var(--amber-dim); background: #22262c; }
+  .flow-box.highlight { border-color: var(--amber); background: rgba(232,160,32,0.06); }
+  .flow-box.highlight .flow-box-title { color: var(--amber); }
+  .flow-box-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+  .flow-box-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--white); margin-bottom: 0.3rem; }
+  .flow-box-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.55; }
+
+  /* JOIN */
+  .join-section { background: var(--dark); }
+  .join-intro { max-width: 700px; font-size: 1.1rem; color: var(--muted); line-height: 1.8; margin-bottom: 4rem; }
+  .join-intro strong { color: var(--white); font-weight: 600; }
+  .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-bottom: 3rem; }
+  .tier { background: var(--black); padding: 2.4rem 2rem; display: flex; flex-direction: column; transition: background 0.2s; }
+  .tier:hover { background: var(--steel); }
+  .tier.featured { background: rgba(232,160,32,0.06); border: 1px solid var(--amber-dim); margin: -1px; z-index: 1; }
+  .tier-badge { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--amber); margin-bottom: 1rem; }
+  .tier-name { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--white); line-height: 1; margin-bottom: 0.5rem; }
+  .tier-price { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); }
+  .tier-features { list-style: none; flex: 1; margin-bottom: 2rem; }
+  .tier-features li { font-size: 0.88rem; color: var(--muted); padding: 0.5rem 0; border-bottom: 1px solid rgba(42,45,50,0.5); display: flex; gap: 0.8rem; align-items: flex-start; }
+  .tier-features li::before { content: '—'; color: var(--amber-dim); flex-shrink: 0; font-size: 0.75rem; margin-top: 0.05rem; }
+
+  /* DESTINATIONS */
+  .dest-intro { max-width: 600px; font-size: 1.05rem; color: var(--muted); line-height: 1.8; margin-bottom: 3rem; }
+  .dest-intro strong { color: var(--white); font-weight: 600; }
+  .destinations { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .destination { background: var(--dark); padding: 2.4rem 2rem; transition: background 0.2s; }
+  .destination:hover { background: var(--steel); }
+  .dest-region { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
+  .dest-name { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; color: var(--amber); line-height: 1; margin-bottom: 1rem; }
+  .dest-bar { height: 2px; background: var(--rule); margin-bottom: 1.2rem; position: relative; }
+  .dest-bar::after { content: ''; position: absolute; left: 0; top: 0; height: 2px; background: var(--amber); width: var(--fill, 40%); }
+  .dest-detail { font-size: 0.87rem; color: var(--muted); line-height: 1.7; }
+  .dest-detail li { list-style: none; padding-left: 1rem; position: relative; margin-bottom: 0.3rem; }
+  .dest-detail li::before { content: '—'; position: absolute; left: 0; color: var(--amber-dim); font-size: 0.75rem; }
+
+  /* PARTNER */
+  .partner-section { background: var(--steel); }
+  .partner-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 3rem; }
+  .partner-card { background: var(--dark); padding: 2.4rem 2rem; transition: background 0.2s; }
+  .partner-card:hover { background: #1a1d22; }
+  .partner-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--rule); line-height: 1; margin-bottom: 1rem; }
+  .partner-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--amber); margin-bottom: 0.8rem; }
+  .partner-body { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+  .partner-eg { margin-top: 1rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber-dim); }
+
+  /* CONTACT */
+  .contact-section { background: var(--black); text-align: center; }
+  .contact-inner { max-width: 640px; margin: 0 auto; }
+  .contact-body { font-size: 1.1rem; color: var(--muted); line-height: 1.85; margin-bottom: 2.5rem; }
+  .contact-body strong { color: var(--white); font-weight: 600; }
+  .contact-sub { margin-top: 1.5rem; font-size: 0.85rem; color: var(--muted); }
+
+  /* FOOTER */
+  footer { padding: 2rem 4rem; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center; }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.15em; color: var(--muted); }
+  .footer-note { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rule); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-eyebrow { animation: fadeUp 0.6s ease both; }
+  h1 { animation: fadeUp 0.6s 0.1s ease both; }
+  .hero-sub { animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-cta { animation: fadeUp 0.6s 0.3s ease both; }
+  .hero-stats { animation: fadeUp 0.6s 0.4s ease both; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav, section, footer { padding-left: 2rem; padding-right: 2rem; }
+    .hero-content { padding: 3rem 2rem 2rem; }
+    .dream-grid, .structure-intro { grid-template-columns: 1fr; gap: 3rem; }
+    .tax-cards { grid-template-columns: repeat(2, 1fr); }
+    .flow-row-5 { grid-template-columns: repeat(2, 1fr); }
+    .tiers, .destinations, .partner-grid { grid-template-columns: 1fr; }
+    .hero-stats { flex-direction: column; }
+    .stat { border-right: none; border-bottom: 1px solid var(--rule); }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <nav>
+    <div class="nav-logo">EES</div>
+    <div class="nav-tag">Engineering Event Support &nbsp;·&nbsp; Partner &amp; Travel Prospectus</div>
+  </nav>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Travel. Earn. Build something real.</div>
+    <h1>The Adventure <span>Is The Business</span></h1>
+    <p class="hero-sub">
+      <strong>Engineering Event Support</strong> is a professionally structured mobile engineering and content business. We travel, we work, we film — and we generate income inside a legitimate, tax-advantaged business structure. <strong>Now we're opening it up.</strong> Join us on the road, invest in the journey, or partner with the brand.
+    </p>
+    <div class="hero-cta">
+      <a href="#join" class="btn-primary">Join the journey</a>
+      <a href="#model" class="btn-ghost">See how it works</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">RPEQ</div>
+      <div class="stat-label">Registered professional engineer</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">15+</div>
+      <div class="stat-label">Years engineering experience</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Countries on current route</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">5</div>
+      <div class="stat-label">Active income streams</div>
+    </div>
+  </div>
+</div>
+
+<!-- THE DREAM -->
+<section class="dream-section">
+  <div class="section-eyebrow">The concept</div>
+  <h2>What if the trip paid for itself?</h2>
+  <div class="dream-grid">
+    <div class="dream-body">
+      <p>Most people take holidays and pay for them twice — once with money, and again coming home to a pile of work. We do it differently.</p>
+      <p><strong>Engineering Event Support is built on a simple idea:</strong> combine genuine professional engineering services with a content brand, structure it properly inside a tax-advantaged business vehicle, and let the operation fund the lifestyle.</p>
+      <p>Travel becomes an operational expense. Gear becomes equipment. Content becomes an asset that generates income while you sleep. The whole thing sits inside a business structure designed to <strong>protect wealth, distribute profit efficiently, and scale over time</strong>.</p>
+      <p>This isn't a tax dodge. It's what happens when real work naturally requires real travel — and you're smart enough to build the right infrastructure around it.</p>
+    </div>
+    <div class="dream-pillars">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <div>
+          <div class="pillar-title">Work that travels</div>
+          <div class="pillar-body">Engineering consulting, project support, and shutdown services that require being on-site — regionally and internationally. Legitimate travel. Real work.</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <div>
+          <div class="pillar-title">Content that compounds</div>
+          <div class="pillar-body">Every trip produces video, photos, and stories. That content builds an audience, attracts sponsors, and earns ad revenue long after you've left the location.</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <div>
+          <div class="pillar-title">Structure that protects</div>
+          <div class="pillar-body">A properly advised business structure separates activity from personal liability, distributes profit tax-efficiently, and positions the whole operation for long-term wealth accumulation.</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">04</div>
+        <div>
+          <div class="pillar-title">A community that grows</div>
+          <div class="pillar-body">The people who join us on the road aren't passengers — they're participants. They get access to the workflow, the structure, and the experience of doing it for real.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUSINESS STRUCTURE -->
+<section id="structure">
+  <div class="section-eyebrow">The structure</div>
+  <h2>Built to save tax.<br>Built to last.</h2>
+  <div class="structure-intro">
+    <p>The difference between a holiday and a business trip isn't the destination — it's <strong>what you build around it</strong>. Engineering Event Support is structured from the ground up to make travel a legitimate, ATO-defensible business activity. Deductions, distributions, and long-term asset accumulation are built into the operating model from day one.</p>
+    <p>We work with professional accountants and advisors to ensure every element of the structure has <strong>commercial substance, revenue intent, and proper documentation</strong>. The goal isn't to make holidays deductible. The goal is to build a business where travel is genuinely necessary — and it is.</p>
+  </div>
+  <div class="tax-cards">
+    <div class="tax-card">
+      <div class="tax-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+      <div class="tax-title">Risk separation</div>
+      <div class="tax-body">Content, vehicles, travel, and lifestyle operations sit in a dedicated entity — completely separated from core engineering PI exposure and certification work.</div>
+    </div>
+    <div class="tax-card">
+      <div class="tax-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+      <div class="tax-title">Tax-efficient distributions</div>
+      <div class="tax-body">A family trust structure allows profits to be distributed across multiple beneficiaries and entities — putting income where it's taxed least, legally, with full advisor oversight.</div>
+    </div>
+    <div class="tax-card">
+      <div class="tax-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <div class="tax-title">Legitimate expense offsetting</div>
+      <div class="tax-body">Travel, accommodation, equipment, vehicles, and content production costs offset business income — reducing taxable profit while the operation genuinely scales.</div>
+    </div>
+    <div class="tax-card">
+      <div class="tax-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+      <div class="tax-title">Wealth accumulation</div>
+      <div class="tax-body">Retained earnings flow into an investment entity for long-term accumulation — separating operational income from investment growth and protecting the asset base.</div>
+    </div>
+  </div>
+</section>
+
+<!-- INCOME MODEL -->
+<section id="model" class="income-section">
+  <div class="section-eyebrow">The income model</div>
+  <h2>Five ways the road pays.</h2>
+  <div class="flow">
+    <div class="flow-row flow-row-1">
+      <div class="flow-box highlight">
+        <div class="flow-box-label">The foundation</div>
+        <div class="flow-box-title">Engineering expertise + travel + content creation</div>
+        <div class="flow-box-desc">Professional credentials meet daily content output — Reels, YouTube, live journey tracking. The combination creates reach that a pure lifestyle brand never could.</div>
+      </div>
+    </div>
+    <div class="flow-connector"><svg viewBox="0 0 24 24"><polyline points="12 5 12 19"/><polyline points="6 13 12 19 18 13"/></svg></div>
+    <div class="flow-row flow-row-1">
+      <div class="flow-box highlight">
+        <div class="flow-box-label">The asset</div>
+        <div class="flow-box-title">A niche professional audience builds</div>
+        <div class="flow-box-desc">Engineers, project workers, technically-minded travellers — not a generic lifestyle crowd. A smaller, specific audience is worth far more to the right partners.</div>
+      </div>
+    </div>
+    <div class="flow-connector"><svg viewBox="0 0 24 24"><polyline points="12 5 12 19"/><polyline points="6 13 12 19 18 13"/></svg></div>
+    <div class="flow-row flow-row-5">
+      <div class="flow-box">
+        <div class="flow-box-label">Stream 1</div>
+        <div class="flow-box-title">Sponsorship</div>
+        <div class="flow-box-desc">Flat fee per post or campaign from aligned brands</div>
+      </div>
+      <div class="flow-box">
+        <div class="flow-box-label">Stream 2</div>
+        <div class="flow-box-title">Affiliate</div>
+        <div class="flow-box-desc">Commission on link-driven purchases — passive, immediate</div>
+      </div>
+      <div class="flow-box">
+        <div class="flow-box-label">Stream 3</div>
+        <div class="flow-box-title">Ad revenue</div>
+        <div class="flow-box-desc">YouTube pays per view — compounds as library grows</div>
+      </div>
+      <div class="flow-box">
+        <div class="flow-box-label">Stream 4</div>
+        <div class="flow-box-title">Digital products</div>
+        <div class="flow-box-desc">Guides, templates, courses — created once, sold forever</div>
+      </div>
+      <div class="flow-box">
+        <div class="flow-box-label">Stream 5</div>
+        <div class="flow-box-title">Project leads</div>
+        <div class="flow-box-desc">Content profile attracts inbound engineering enquiries</div>
+      </div>
+    </div>
+    <div class="flow-connector"><svg viewBox="0 0 24 24"><polyline points="12 5 12 19"/><polyline points="6 13 12 19 18 13"/></svg></div>
+    <div class="flow-row flow-row-2">
+      <div class="flow-box highlight">
+        <div class="flow-box-label">The entity</div>
+        <div class="flow-box-title">Engineering Event Support Pty Ltd</div>
+        <div class="flow-box-desc">All income lands here · travel costs offset revenue · commercially structured from day one</div>
+      </div>
+      <div class="flow-box highlight">
+        <div class="flow-box-label">Distribution</div>
+        <div class="flow-box-title">Trust structure distributes profit</div>
+        <div class="flow-box-desc">To individuals · to investment entities · retained for growth · accountant-managed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOIN THE TRIP -->
+<section id="join" class="join-section">
+  <div class="section-eyebrow">Travel with us</div>
+  <h2>Join the journey.<br>Not just the holiday.</h2>
+  <p class="join-intro">We're not running tours. We're building a model — and we're inviting a small number of people to be part of it. Whether you want to <strong>travel with us, invest in the operation, or learn how to replicate this structure yourself</strong>, there's a place for you in the EES ecosystem.</p>
+  <div class="tiers">
+    <div class="tier">
+      <div class="tier-badge">Entry level</div>
+      <div class="tier-name">Follower</div>
+      <div class="tier-price">Free — join the community</div>
+      <ul class="tier-features">
+        <li>Full access to content across all platforms</li>
+        <li>Behind-the-scenes workflow breakdowns</li>
+        <li>How the business structure works, explained simply</li>
+        <li>Route maps and live journey tracking</li>
+        <li>Community updates and trip announcements</li>
+      </ul>
+      <a href="#contact" class="btn-ghost" style="text-align:center;">Follow along</a>
+    </div>
+    <div class="tier featured">
+      <div class="tier-badge">Limited places</div>
+      <div class="tier-name">Participant</div>
+      <div class="tier-price">Expression of interest — selective intake</div>
+      <ul class="tier-features">
+        <li>Join us on a leg of the journey in person</li>
+        <li>Travel and logistics coordinated through the operation</li>
+        <li>Appear in content — credited, branded, authentic</li>
+        <li>Access to the full business workflow and setup guide</li>
+        <li>Learn how to replicate this structure for your own travel</li>
+        <li>Direct access — not a tour group, not a package deal</li>
+      </ul>
+      <a href="#contact" class="btn-primary" style="text-align:center; display:block;">Register interest</a>
+    </div>
+    <div class="tier">
+      <div class="tier-badge">Commercial</div>
+      <div class="tier-name">Partner</div>
+      <div class="tier-price">Brand &amp; investment enquiries welcome</div>
+      <ul class="tier-features">
+        <li>Sponsorship of specific trip legs or content series</li>
+        <li>Affiliate programme integration</li>
+        <li>Co-branded content and product placement</li>
+        <li>Investment in the EES operating structure</li>
+        <li>Revenue share arrangements considered</li>
+        <li>Custom partnership packages available</li>
+      </ul>
+      <a href="#contact" class="btn-ghost" style="text-align:center;">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- DESTINATIONS -->
+<section>
+  <div class="section-eyebrow">Current route</div>
+  <h2>Where we're going.</h2>
+  <p class="dest-intro">The current journey covers three countries across Scandinavia and the North Atlantic. Each leg has its own content tone, audience angle, and partnership opportunities. <strong>Future routes include regional Australia and beyond.</strong></p>
+  <div class="destinations">
+    <div class="destination">
+      <div class="dest-region">Scandinavia</div>
+      <div class="dest-name">Norway</div>
+      <div class="dest-bar" style="--fill: 85%"></div>
+      <ul class="dest-detail">
+        <li>Lofoten Islands · fjords · coastal drives</li>
+        <li>Cinematic Reels — dramatic landscapes</li>
+        <li>Engineering infrastructure interest</li>
+        <li>YouTube long-form · daily IG content</li>
+        <li>Tone: dramatic, cinematic, technical</li>
+      </ul>
+    </div>
+    <div class="destination">
+      <div class="dest-region">Northern Europe</div>
+      <div class="dest-name">Denmark</div>
+      <div class="dest-bar" style="--fill: 60%"></div>
+      <ul class="dest-detail">
+        <li>Copenhagen · countryside · coastal roads</li>
+        <li>Upbeat, lifestyle-forward content</li>
+        <li>Engineering and design crossover</li>
+        <li>Strong brand partnership opportunity</li>
+        <li>Tone: upbeat, curious, accessible</li>
+      </ul>
+    </div>
+    <div class="destination">
+      <div class="dest-region">North Atlantic</div>
+      <div class="dest-name">Ireland</div>
+      <div class="dest-bar" style="--fill: 45%"></div>
+      <ul class="dest-detail">
+        <li>Wild Atlantic Way · rural engineering</li>
+        <li>Story-driven, acoustic content</li>
+        <li>Regional infrastructure focus</li>
+        <li>YouTube long-form potential</li>
+        <li>Tone: reflective, authentic, human</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNER -->
+<section class="partner-section" id="partner">
+  <div class="section-eyebrow">Brand partnerships</div>
+  <h2>Where your brand fits in.</h2>
+  <div class="partner-grid">
+    <div class="partner-card">
+      <div class="partner-num">01</div>
+      <div class="partner-title">Gear &amp; Equipment</div>
+      <div class="partner-body">Featured product placement in Reels and YouTube content. Honest, engineering-grade reviews from someone who actually uses gear on-site and on the road. Real field use, not lifestyle fluff.</div>
+      <div class="partner-eg">Tools · PPE · camera gear · vehicle equipment · comms tech</div>
+    </div>
+    <div class="partner-card">
+      <div class="partner-num">02</div>
+      <div class="partner-title">Travel &amp; Accommodation</div>
+      <div class="partner-body">A live journey with daily content output. Accommodation providers, travel apps, ferry operators, and tourism boards can reach a professionally credible, engaged travelling audience.</div>
+      <div class="partner-eg">Campsites · booking platforms · travel apps · tourism boards</div>
+    </div>
+    <div class="partner-card">
+      <div class="partner-num">03</div>
+      <div class="partner-title">Affiliate &amp; Performance</div>
+      <div class="partner-body">Low friction for both sides. We link, you track, we earn commission. Ideal for brands wanting performance-based partnership without upfront commitment.</div>
+      <div class="partner-eg">Amazon · tool brands · SaaS · travel platforms · insurance</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="contact-inner">
+    <div class="section-eyebrow" style="justify-content:center;">Get involved</div>
+    <h2>Ready to be part of it?</h2>
+    <p class="contact-body">Whether you want to <strong>join a leg of the journey</strong>, partner your brand with the content, invest in the operation, or understand how to build something like this yourself — reach out. Places are genuinely limited and <strong>we're selective about who travels with us</strong>.</p>
+    <a href="mailto:hello@engineeringeventsupport.com.au" class="btn-primary">Make contact</a>
+    <p class="contact-sub">hello@engineeringeventsupport.com.au</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Engineering Event Support</div>
+  <div class="footer-note">Queensland, Australia &nbsp;·&nbsp; Built on real work &nbsp;·&nbsp; Properly structured</div>
+</footer>
+
+</body>
+</html>
